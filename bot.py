@@ -18,7 +18,7 @@ async def start(update: Update, context):
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text(
-        "Привіт, я бот для відправлення заяви для отримання допомоги з медичною додвікою.\n Завдяки мені ти зможеш отримати довідку необхідну для навчання в автошколі та складання іспитів в Сервісних Центрах України",
+        "Привіт, я бот для відправлення заяви для отримання допомоги з медичною додвікою.\n\n  Завдяки мені ти зможеш отримати довідку необхідну для навчання в автошколі та складання іспитів в Сервісних Центрах України",
         reply_markup=reply_markup)
 
 
@@ -38,8 +38,8 @@ async def button_click(update: Update, context):
     # Отправляем сообщение в группу с менеджерами
     manager_message = (
         f"Новая заявка от пользователя @{user.username if user.username else user.full_name}.\n"
-        f""
-        f"---SYSTEM---"
+        f"\n"
+        f"---SYSTEM---\n"
         f"ID: {user.id}"  # Добавляем ID пользователя
     )
     await context.bot.send_message(chat_id=MANAGER_GROUP_ID,
