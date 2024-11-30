@@ -1,2 +1,2 @@
 # startup.sh
-python bot.py
+python3 bot.py
