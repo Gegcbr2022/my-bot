@@ -18,7 +18,7 @@ async def start(update: Update, context):
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text(
-        "Привіт, я бот для відправлення заяви для отримання допомоги з медичною додвікою.\n\n  Завдяки мені ти зможеш отримати довідку необхідну для навчання в автошколі та складання іспитів в Сервісних Центрах України",
+        "Привіт, я бот для відправлення заяви для отримання допомоги з медичною додвікою.\n\nЗавдяки мені ти зможеш отримати довідку необхідну для навчання в автошколі та складання іспитів в Сервісних Центрах України",
         reply_markup=reply_markup)
 
 
@@ -56,7 +56,7 @@ async def user_message(update: Update, context):
     user = update.message.from_user
     if user.id in active_requests:
         # Отправляем сообщение от пользователя в группу менеджеров
-        manager_message = f"Новое сообщение от @{user.username or user.full_name}:\n {update.message.text}\n\n\n---SYSTEM---\n ID: {user.id}"
+        manager_message = f"Новое сообщение от @{user.username or user.full_name}:\n{update.message.text}\n\n\n---SYSTEM---\n ID: {user.id}"
         await context.bot.send_message(chat_id=MANAGER_GROUP_ID,
                                        text=manager_message)
     else:
@@ -75,7 +75,7 @@ async def manager_message(update: Update, context):
 
                         if user_id in active_requests:
                             chat_id = active_requests[user_id]['chat_id']
-                            await context.bot.send_message(chat_id=chat_id, text=f"Відповідь від спеціаліста:\n {update.message.text}")
+                            await context.bot.send_message(chat_id=chat_id, text=f"Відповідь від спеціаліста:\n{update.message.text}")
                     except (ValueError, AttributeError):
                         await update.message.reply_text("Не удалось найти ID пользователя в ответе.")
 
