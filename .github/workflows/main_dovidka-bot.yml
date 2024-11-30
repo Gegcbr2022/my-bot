@@ -71,8 +71,8 @@ jobs:
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
-        id: deploy-to-webapp
         with:
           app-name: 'dovidka-bot'
           slot-name: 'Production'
-          startup-command: 'python bot.py'
+          package: ./release.zip
+
